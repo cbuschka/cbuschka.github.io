@@ -6,6 +6,7 @@ AUTHOR = 'Cornelius Buschka'
 SITENAME = 'cbuschka.github.io'
 SITEURL = ''
 
+THEME = './theme'
 PATH = 'content'
 PAGE_PATHS = ['pages']
 ARTICLE_PATHS = ['articles']
