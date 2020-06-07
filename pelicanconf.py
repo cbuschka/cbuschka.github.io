@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Cornelius Buschka'
+COPYRIGHT = "2020 Cornelius Buschka, All rights reserved."
+AUTHOR = 'Conni'
 SITENAME = 'cbuschka.github.io'
 SITEURL = ''
+SITETITLE = 'A developer\'s blog'
+#SITESUBTITLE = 'Stories and Learnings in the context of Software Development'
 
 THEME = './theme'
 PATH = 'content'
