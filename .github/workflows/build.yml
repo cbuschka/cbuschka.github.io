@@ -1,0 +1,24 @@
+name: build
+on:
+  - push
+  - workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: ./generate.sh
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.TOKEN }}
+          external_repository: cbuschka/cbuschka.github.io
+          publish_dir: ./public
+          # keep_files: true
+          user_name: cbuschka
+          user_email: cbuschka@gmail.com
+          publish_branch: github-pages
