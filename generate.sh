@@ -12,6 +12,8 @@ if [ -d "${OUTPUT_DIR}" ]; then
 fi
 mkdir -p ${OUTPUT_DIR}
 
+VERSION_INFO="$(git rev-parse --short=8 HEAD), $(date --iso=minutes)"
+
 echo "Generating pages..."
 cd ${PAGES_DIR}
 for PAGE in `cd ${PAGES_DIR} && find . -name '*.html'`; do
@@ -20,7 +22,7 @@ for PAGE in `cd ${PAGES_DIR} && find . -name '*.html'`; do
 
   if [ ! -L "${PAGE}" ]; then
     for f in ${PARTIALS_DIR}/top.html ${PAGE} ${PARTIALS_DIR}/bottom.html; do
-      cat $f >> ${OUTPUT_DIR}/${PAGE}
+      cat $f | sed -E "s/__VERSION_INFO__/${VERSION_INFO}/g" >> ${OUTPUT_DIR}/${PAGE}
     done
   else
     cp -P ${PAGE} ${OUTPUT_DIR}/$(dirname ${PAGE})
